@@ -23,7 +23,7 @@ export default function pizzaListReducer(state = initialState, action) {
       return [
         ...state,
         {
-          id: action.payload.id,
+          id: state[state.length - 1].id + 1,
           name: action.payload.name,
           description: ""
         }
