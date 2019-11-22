@@ -40,7 +40,7 @@ class PizzaList extends React.Component {
 
 function mapStateToProps(reduxState) {
   return {
-    pizzas: reduxState
+    pizzas: reduxState.pizzaList
   };
 }
 
