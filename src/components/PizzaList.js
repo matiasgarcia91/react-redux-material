@@ -14,13 +14,24 @@ class PizzaList extends React.Component {
     this.props.addPizza(this.state.newPizzaName);
   };
 
+  setSelectedPizza = id => {
+    this.props.selectPizza(id);
+  };
+
   render() {
     return (
       <div>
         <h1>Pizza Explorer</h1>
         <ul>
           {this.props.pizzas.map(pizza => {
-            return <li key={pizza.id}>{pizza.name}</li>;
+            return (
+              <li
+                key={pizza.id}
+                onClick={() => this.setSelectedPizza(pizza.id)}
+              >
+                {pizza.name}
+              </li>
+            );
           })}
         </ul>
         <p>
@@ -52,6 +63,12 @@ function mapDispatchToProps(dispatch) {
         payload: {
           name: pizzaName
         }
+      });
+    },
+    selectPizza(id) {
+      dispatch({
+        type: "SELECT_PIZZA",
+        payload: id
       });
     }
   };
